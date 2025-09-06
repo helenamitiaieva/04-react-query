@@ -1,11 +1,16 @@
 .header {
+    position: fixed;      
+    top: 0;
+    left: 0;
+    width: 100%;       
     padding: 20px;
     background-color: #ffffff;
     border-bottom: 1px solid #e0e0e0;
-    margin-bottom: 20px;
+    z-index: 1000;      
 }
 
 .container {
+    margin-top: 50px;
     max-width: 1440px;
     margin: 0 auto;
     display: flex;
@@ -40,6 +45,8 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     width: 240px;
+    background-color: #fff;
+    color: #6e6969;
 }
 
 .button {
