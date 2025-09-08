@@ -7,8 +7,8 @@ import { fetchMovies } from '../../services/movieService';
 import type { Movie } from '../../types/movie';
 import Loader from '../Loader/Loader';
 import MovieGrid from '../MovieGrid/MovieGrid';
-import { ErrorMessage } from '../ErrorMessage/ErrorMessage';
-import {MovieModal} from '../MovieModal/MovieModal';
+import ErrorMessage  from '../ErrorMessage/ErrorMessage';
+import MovieModal from '../MovieModal/MovieModal';
 
 function App() {
 const [movies, setMovies] = useState<Movie[]>([]);
@@ -18,7 +18,9 @@ const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
 
 const handleSearch = async (query: string) => {
   setLoading(true);
+  // setError(false);
   setMovies([]);
+  // setSelectedMovie(null);
 
   try {
     setError(false);
@@ -43,9 +45,10 @@ const handleSearch = async (query: string) => {
       {error && <ErrorMessage />}
       {!loading && !error && (
         <MovieGrid 
-  movies={movies}
-  onSelect={(movie) => setSelectedMovie(movie)}
-/>)}
+          movies={movies}
+          onSelect={(movie) => setSelectedMovie(movie)}
+        />
+      )}
       {selectedMovie && (
         <MovieModal
           movie={selectedMovie}

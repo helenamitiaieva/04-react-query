@@ -9,7 +9,7 @@ interface MovieModalProps {
   onClose: () => void;
 }
 
-export const MovieModal = ({movie, onClose}: MovieModalProps) => {
+const MovieModal = ({movie, onClose}: MovieModalProps) => {
   const modalRoot = document.getElementById("modal-root")!;
 useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
@@ -67,4 +67,4 @@ useEffect(() => {
     modalRoot
   );
 }
-
+export default MovieModal;
