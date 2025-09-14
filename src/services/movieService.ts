@@ -5,7 +5,7 @@ import { TMDB_BASE_URL, TMDB_TOKEN } from "../config/tmdb";
 
 const TMDB_IMAGE_BASE_URL = "https://image.tmdb.org/t/p";
 
-interface TMDBSearchResponse {
+export interface TMDBSearchResponse {
   page: number;
   results: Movie[];
   total_results: number;
@@ -22,7 +22,11 @@ export const fetchMovies = async (
   page = 1
 ): Promise<TMDBSearchResponse> => {
   const { data } = await api.get<TMDBSearchResponse>("/search/movie", {
-    params: { query, page, include_adult: false, language: "en-US" },
+    params: { 
+      query, 
+      page, 
+      include_adult: false, 
+      language: "en-US" },
   });
   return data;
 };
@@ -30,7 +34,5 @@ export const fetchMovies = async (
 export const makeImgUrl = (
   path: string | null,
   size: "w200" | "w343" | "w500" | "original" = "w343"
-): string | null => {
-  if (!path) return null;
-  return `${TMDB_IMAGE_BASE_URL}/${size}${path}`;
-};
+): string | null => 
+  (path ? `${TMDB_IMAGE_BASE_URL}/${size}${path}` : null);
